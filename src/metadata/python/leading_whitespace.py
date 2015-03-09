@@ -1,4 +1,6 @@
+from kao_decorators import operators_via_fn
 
+@operators_via_fn(lambda obj: len(obj))
 class LeadingWhitespace:
     """ Represents the leading whitespace for a line in a Python file """
     
@@ -9,14 +11,3 @@ class LeadingWhitespace:
     def __len__(self):
         """ Return the length of the leading whitespace """
         return len(self.whitespace)
-        
-    def __lt__(self, other):
-        """ Return if this leading whitespace is less than the other """
-        return len(self) < len(other)
-        
-    def __eq__(self, other):
-        """ Return if this leading whitespace is equal to the other """
-        return len(self) == len(other)
-        
-    def __le__(self, other):
-        return self < other or self == other
