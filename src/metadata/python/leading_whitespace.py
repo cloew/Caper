@@ -17,3 +17,6 @@ class LeadingWhitespace:
     def __eq__(self, other):
         """ Return if this leading whitespace is equal to the other """
         return len(self) == len(other)
+        
+    def __le__(self, other):
+        return self < other or self == other
