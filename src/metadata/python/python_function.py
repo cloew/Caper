@@ -1,3 +1,4 @@
+from .leading_whitespace import LeadingWhitespace
 
 class PythonFunction:
     """ Represents a Python function """
@@ -20,3 +21,7 @@ class PythonFunction:
         leftHeader, rightHeader = header.split('(')
         self.name = leftHeader.replace('def', '').strip()
         self.arguments = [argument.strip() for argument in rightHeader.split(')')[0].split(',') if argument.strip() != '']
+        
+    def getHeader(self, additionalArguments=[]):
+        """ Return the funciton definition string """
+        return "{0}def {1}({2}):".format(LeadingWhitespace(self.header), self.name, ", ".join(self.arguments+additionalArguments))
