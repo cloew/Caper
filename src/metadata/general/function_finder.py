@@ -1,4 +1,5 @@
 from kao_io.file_line import FileLine
+from kao_io.file_section import FileSection
 
 class FunctionFinder:
     """ Represents a method of finding a function from the body of a file """
@@ -25,7 +26,7 @@ class FunctionFinder:
         if not self.requestedLineWithinFunction(currentLine, startingLine, endingLine):
             return None
 
-        return lines[startingLine.lineIndex: endingLine.lineIndex+1]
+        return FileSection(startingLine, endingLine, lines)
             
     def findStartingLine(self, currentLine):
         """ Returns the strating line of the function or None """
