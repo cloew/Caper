@@ -1,4 +1,4 @@
-from .file_line import FileLine
+from kao_io.file_line import FileLine
 
 class FunctionFinder:
     """ Represents a method of finding a function from the body of a file """

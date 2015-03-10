@@ -1,6 +1,6 @@
 import unittest
 
-from metadata.general.file_line import FileLine
+from kao_io.file_line import FileLine
 
 class isFirstLine(unittest.TestCase):
     """ Test cases of isFirstLine """

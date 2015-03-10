@@ -1,9 +1,11 @@
 import unittest
 
+from io.Test.suite import suite as io_suite
 from metadata.Test.suite import suite as metadata_suite
 
 # Collect all the test suites
-suites = [metadata_suite]
+suites = [metadata_suite,
+          io_suite]
 
 alltests = unittest.TestSuite(suites)
 
