@@ -11,3 +11,7 @@ class LeadingWhitespace:
     def __len__(self):
         """ Return the length of the leading whitespace """
         return len(self.whitespace)
+        
+    def __add__(self, other):
+        """ Add this whitespace to a given string """
+        return self.whitespace + other

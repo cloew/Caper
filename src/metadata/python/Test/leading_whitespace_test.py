@@ -62,9 +62,30 @@ suiteEquals = unittest.TestSuite(map(equals, testcasesEquals))
 
 ##########################################################
 
+class add(unittest.TestCase):
+    """ Test cases of add """
+    WHITESPACE = "    "
+    
+    def setUp(self):
+        """ Build the LeadingWhitespace for the test """
+        self.whitespace = LeadingWhitespace(self.WHITESPACE)
+        
+    def whitespaceAdded(self):
+        """ Test that the whitespace is added to the string """
+        OTHER = "some random text"
+        result = self.whitespace+OTHER
+        self.assertEqual("{0}{1}".format(self.WHITESPACE, OTHER), result)
+
+# Collect all test cases in this class
+testcasesAdd = ["whitespaceAdded"]
+suiteAdd = unittest.TestSuite(map(add, testcasesAdd))
+
+##########################################################
+
 # Collect all test cases in this file
 suites = [suiteLessThan,
-          suiteEquals]
+          suiteEquals,
+          suiteAdd]
 suite = unittest.TestSuite(suites)
 
 if __name__ == "__main__":
