@@ -11,7 +11,7 @@ class KaoFile:
         """ Initialize the file """
         if filename is not None:
             with open(filename, 'r') as file:
-                self.lines = file.readlines()
+                self.lines = [line.rstrip() for line in file.readlines()]
         elif lines is not None:
             self.lines = lines
         else:
@@ -24,3 +24,13 @@ class KaoFile:
     def getSection(self, startingLine, endingLine):
         """ Return the File Section for the given lines """
         return FileSection(startingLine.lineIndex, endingLine.lineIndex, self.lines)
+            
+    def replaceSection(self, section, lines):
+        """ Return the File Section for the given lines """
+        self.lines[section.startIndex: section.endIndex+1] = lines
+        return FileSection(section.startIndex, section.startIndex+len(lines)-1, self.lines)
+        
+    def save(self, filename):
+        """ Save the file """
+        with open(filename, 'w') as f:
+            f.write('\n'.join(self.lines))
