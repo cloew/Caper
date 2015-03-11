@@ -16,7 +16,7 @@ class find(unittest.TestCase):
         fnStart = 0
         fnEnd = 2
         lines = ["Line 1", "Line 2", "Line 3", "Line 4"]
-        expected = FileSection(fnStart, fnEnd, lines[fnStart:fnEnd+1])
+        expected = FileSection(fnStart, fnEnd, lines)
         
         finder = self.buildFinder(fnStartsOn=fnStart, fnEndsOn=fnEnd)
         functionLines = finder.find(1, KaoFile(lines=lines))
