@@ -1,11 +1,11 @@
 import unittest
 
-from io.Test.suite import suite as io_suite
+from kao_io.Test.suite import suite as kao_io_suite
 from metadata.Test.suite import suite as metadata_suite
 
 # Collect all the test suites
 suites = [metadata_suite,
-          io_suite]
+          kao_io_suite]
 
 alltests = unittest.TestSuite(suites)
 
