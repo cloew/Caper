@@ -10,6 +10,10 @@ class CaperFunction:
         """ Initialize the Caper Function with the function it is wrapping """
         self.function = function
         
+    def getFnCall(self, argValues):
+        """ Return the function call string """
+        return self.function.getFnCall(argValues, additionalArguments=[self.VAULT_VAR])
+        
     @property
     def lines(self):
         """ Return the lines of the function with housekeeping to store the variable changes in the caper vault """

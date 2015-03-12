@@ -34,3 +34,7 @@ class KaoFile:
         """ Save the file """
         with open(filename, 'w') as f:
             f.write('\n'.join(self.lines))
+            
+    def append(self, lines):
+        """ Add the given lines to the end of the file """
+        self.lines += lines

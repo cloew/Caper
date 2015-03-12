@@ -23,5 +23,9 @@ class PythonFunction:
         self.arguments = [argument.strip() for argument in rightHeader.split(')')[0].split(',') if argument.strip() != '']
         
     def getHeader(self, additionalArguments=[]):
-        """ Return the funciton definition string """
+        """ Return the function definition string """
         return "{0}def {1}({2}):".format(LeadingWhitespace(self.header), self.name, ", ".join(self.arguments+additionalArguments))
+        
+    def getFnCall(self, argValues, additionalArguments=[]):
+        """ Return the function call string """
+        return "{1}({2})".format(LeadingWhitespace(self.header), self.name, ", ".join([argValues[arg] for arg in self.arguments+additionalArguments]))
