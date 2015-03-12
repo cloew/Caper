@@ -4,9 +4,10 @@ class CaperFunctionCaller:
     """ Responsible for creating the code to run a caper function """
     VAULT_VAR = "__caper_vault__"
     
-    def __init__(self, caperFunction):
+    def __init__(self, caperFunction, startingLineNumber):
         """ Initialize with the caper function to call """
         self.caperFunction = caperFunction
+        self.startingLineNumber = startingLineNumber
     
     @property
     def lines(self):
@@ -20,9 +21,9 @@ class CaperFunctionCaller:
                 "    import sys" + "\n"\
                 "    sys.path.insert(0, '{vaultsLib}')" + "\n"\
                 "    from caper_vault import CaperVault" + "\n"\
-                "    {vault} = CaperVault()" + "\n"\
+                "    {vault} = CaperVault({lineNumber})" + "\n"\
                 "    {callCaperFn}" + "\n"\
-                "    print({vault}.states)").format(vaultsLib=self.getPythonVaultsLibDir(), vault=self.VAULT_VAR, callCaperFn=callLine)
+                "    print({vault}.states)").format(vaultsLib=self.getPythonVaultsLibDir(), vault=self.VAULT_VAR, callCaperFn=callLine, lineNumber=self.startingLineNumber)
                
     def getPythonVaultsLibDir(self):
         """ Return the directory that contains the Caper Vaults Python Package """

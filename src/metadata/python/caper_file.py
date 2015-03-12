@@ -21,8 +21,8 @@ class CaperFile:
         
     def create(self):
         """ Create the Caper File """
-        caperFn = self.replaceFunctionWithCaperFunction()
-        caller = CaperFunctionCaller(caperFn)
+        caperFn, startingLine = self.replaceFunctionWithCaperFunction()
+        caller = CaperFunctionCaller(caperFn, startingLine.lineNumber)
         self.file.append(caller.lines)
         self.file.save(self.destination)
         
@@ -33,4 +33,6 @@ class CaperFile:
         fn = PythonFunction(fnSection)
         caperFn = CaperFunction(fn)
         self.file.replaceSection(fnSection, caperFn.lines)
-        return caperFn
+        
+        startingLine = self.file.getLineAt(fnSection.startIndex)
+        return caperFn, startingLine

@@ -9,6 +9,11 @@ class FileLine:
         self.lineIndex = lineIndex
         self.lines = lines
         self.current = self.lines[self.lineIndex]
+       
+    @property
+    def lineNumber(self):
+        """ Returns the line number of this line """
+        return self.lineIndex + 1
         
     def isFirstLine(self):
         """ Return if this is the first line of the file """
