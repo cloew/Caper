@@ -6,17 +6,17 @@ class CaperVault:
     def __init__(self, lineNumber):
         """ Initialize the vault """
         self.startsOn = lineNumber
-        self.states = {}
+        self.states = []
         self.previousState = None
         
     def store(self, lineNumber, variables):
         """ Store the state of the variables on the given line """
         fileLineNumber = self.getFileLineNumber(lineNumber)
-        self.states[fileLineNumber] = {}
+        state = {'lineNumber': fileLineNumber}
         for varName in variables:
             if self.shouldStore(varName, variables):
-                self.states[fileLineNumber][varName] = variables[varName]
-                
+                state[varName] = variables[varName]
+        self.states.append(state)
         self.previousState = variables
         
     def shouldStore(self, varName, variables):
