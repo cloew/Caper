@@ -1,3 +1,4 @@
+import json
 
 class CaperVault:
     """ Represents a store that tracks all variable changes in a caper traacked function """
@@ -27,3 +28,7 @@ class CaperVault:
     def getFileLineNumber(self, lineNumber):
         """ Returns the line number in the file given the line number in the function """
         return self.startsOn+lineNumber
+        
+    def toJson(self):
+        """ Return the state as Json """
+        return json.dumps(self.states)

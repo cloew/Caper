@@ -23,7 +23,7 @@ class CaperFunctionCaller:
                 "    from caper_vault import CaperVault" + "\n"\
                 "    {vault} = CaperVault({lineNumber})" + "\n"\
                 "    {callCaperFn}" + "\n"\
-                "    print({vault}.states)").format(vaultsLib=self.getPythonVaultsLibDir(), vault=self.VAULT_VAR, callCaperFn=callLine, lineNumber=self.startingLineNumber)
+                "    print({vault}.toJson())").format(vaultsLib=self.getPythonVaultsLibDir(), vault=self.VAULT_VAR, callCaperFn=callLine, lineNumber=self.startingLineNumber)
                
     def getPythonVaultsLibDir(self):
         """ Return the directory that contains the Caper Vaults Python Package """
