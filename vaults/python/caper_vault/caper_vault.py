@@ -12,10 +12,10 @@ class CaperVault:
     def store(self, lineNumber, variables):
         """ Store the state of the variables on the given line """
         fileLineNumber = self.getFileLineNumber(lineNumber)
-        state = {'lineNumber': fileLineNumber}
+        state = {'lineNumber': fileLineNumber, 'variables': {}}
         for varName in variables:
             if self.shouldStore(varName, variables):
-                state[varName] = variables[varName]
+                state['variables'][varName] = variables[varName]
         self.states.append(state)
         self.previousState = variables
         
