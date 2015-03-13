@@ -1,4 +1,5 @@
 from .caper_file import CaperFile
+from metadata.output.print_handler import PrintHandler
 
 import json
 import subprocess
@@ -10,11 +11,13 @@ class CaperRunner:
         """ Initialize the Caper Runner with the file to run and the location within it to run """
         self.caperFile = CaperFile(filename, lineNumber)
         self.executable = executable
+        self.outputHandler = PrintHandler()
         
     def run(self):
         """ Run the Caper Function """
         self.caperFile.create()
-        return self.getOutput()
+        output = self.getOutput()
+        self.outputHandler.output(output)
         
     def getOutput(self):
         """ Retrieve the output from the caper file """
