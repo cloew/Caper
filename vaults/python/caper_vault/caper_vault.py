@@ -8,6 +8,7 @@ class CaperVault:
         self.startsOn = lineNumber
         self.states = []
         self.previousState = None
+        self.nextLineNumber = lineNumber+1
         
     def store(self, lineNumber, variables):
         """ Store the state of the variables on the given line """
@@ -18,6 +19,7 @@ class CaperVault:
                 state['variables'][varName] = variables[varName]
         self.states.append(state)
         self.previousState = variables
+        self.nextLineNumber = fileLineNumber+1
         
     def shouldStore(self, varName, variables):
         """ Return if the variable with the given name should be stored """
@@ -28,7 +30,11 @@ class CaperVault:
     def getFileLineNumber(self, lineNumber):
         """ Returns the line number in the file given the line number in the function """
         return self.startsOn+lineNumber
+            
+    def setReturnValue(self, returnValue):
+        """ Returns the line number in the file given the line number in the function """
+        self.returnState = {'value':returnValue, 'lineNumber': self.nextLineNumber}
         
     def toJson(self):
         """ Return the state as Json """
-        return json.dumps(self.states)
+        return json.dumps({'states':self.states, 'returned':self.returnState})

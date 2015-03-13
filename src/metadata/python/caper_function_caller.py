@@ -22,7 +22,8 @@ class CaperFunctionCaller:
                 "    sys.path.insert(0, '{vaultsLib}')" + "\n"\
                 "    from caper_vault import CaperVault" + "\n"\
                 "    {vault} = CaperVault({lineNumber})" + "\n"\
-                "    {callCaperFn}" + "\n"\
+                "    result = {callCaperFn}" + "\n"\
+                "    {vault}.setReturnValue(result)" + "\n"\
                 "    print({vault}.toJson())").format(vaultsLib=self.getPythonVaultsLibDir(), vault=self.VAULT_VAR, callCaperFn=callLine, lineNumber=self.startingLineNumber)
                
     def getPythonVaultsLibDir(self):
