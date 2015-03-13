@@ -1,5 +1,6 @@
 from .caper_file import CaperFile
 
+import json
 import subprocess
 
 class CaperRunner:
@@ -13,4 +14,10 @@ class CaperRunner:
     def run(self):
         """ Run the Caper Function """
         self.caperFile.create()
-        subprocess.call([self.executable, self.caperFile.destination])
+        return self.getOutput()
+        
+    def getOutput(self):
+        """ Retrieve the output from the caper file """
+        output = subprocess.check_output([self.executable, self.caperFile.destination])
+        output = output.decode("utf-8")
+        return json.loads(output)

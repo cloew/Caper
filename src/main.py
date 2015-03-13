@@ -1,6 +1,7 @@
 from metadata.python.caper_runner import CaperRunner
 
 import argparse
+import json
 import sys
 
 def GetCaperArgParser():
@@ -16,7 +17,9 @@ def main(args):
     parser = GetCaperArgParser()
     arguments = parser.parse_args(args)
     runner = CaperRunner(arguments.filename, arguments.line, arguments.exe)
-    runner.run()
+    output = runner.run()
+    print(json.dumps(output))
+    
 
 if __name__ == "__main__":
     main(sys.argv[1:])
