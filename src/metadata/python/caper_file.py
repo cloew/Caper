@@ -1,4 +1,4 @@
-from kao_io.kao_file import KaoFile
+from kao_file import KaoFile
 
 from metadata.general.function_finder import FunctionFinder
 from metadata.python.function_end_detector import FunctionEndDetector
