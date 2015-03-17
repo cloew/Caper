@@ -1,6 +1,5 @@
-from kao_file import KaoFile
+from kao_file import KaoFile, SectionFinder
 
-from metadata.general.function_finder import FunctionFinder
 from metadata.python.function_end_detector import FunctionEndDetector
 from metadata.python.function_start_detector import FunctionStartDetector
 from metadata.python.caper_function import CaperFunction
@@ -28,8 +27,8 @@ class CaperFile:
         
     def replaceFunctionWithCaperFunction(self):
         """ Replace the current function with a Caper Function """
-        finder = FunctionFinder(FunctionStartDetector, FunctionEndDetector)
-        fnSection = finder.find(self.lineNumber, self.file)
+        finder = SectionFinder(FunctionStartDetector, FunctionEndDetector)
+        fnSection = finder.find(self.file, startAt=self.lineNumber)
         fn = PythonFunction(fnSection)
         caperFn = CaperFunction(fn)
         self.file.replaceSection(fnSection, caperFn.lines)
