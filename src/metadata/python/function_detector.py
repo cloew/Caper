@@ -18,5 +18,5 @@ class FunctionDetector:
         """ Returns if the given line is the end of a Python Function """
         if line.isLastLine():
             return True
-        else:
+        elif not line == self.startingLine:
             return LeadingWhitespace(line.next()) <= LeadingWhitespace(self.startingLine)
