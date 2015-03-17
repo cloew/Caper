@@ -12,7 +12,7 @@ class CaperFile:
     
     def __init__(self, filename, lineNumber, destination=None):
         """ Initialize the Caper Runner with the file to run and the location within it to run """
-        self.file = KaoFile(filename)
+        self.file = KaoFile.open(filename)
         self.lineNumber = lineNumber-1
         
         if destination is None:

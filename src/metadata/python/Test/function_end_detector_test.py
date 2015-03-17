@@ -1,6 +1,6 @@
 import unittest
 
-from kao_io.file_line import FileLine
+from kao_file.file_line import FileLine
 from metadata.python.function_end_detector import FunctionEndDetector
 
 class isEnd(unittest.TestCase):
