@@ -1,4 +1,4 @@
-from .leading_whitespace import LeadingWhitespace
+from pyfiles import LeadingWhitespace
 
 class CaperFunction:
     """ Represents a Python function that can interact with a Caper Vault """

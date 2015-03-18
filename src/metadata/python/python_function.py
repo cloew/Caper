@@ -1,4 +1,4 @@
-from .leading_whitespace import LeadingWhitespace
+from pyfiles import LeadingWhitespace
 
 class PythonFunction:
     """ Represents a Python function """
