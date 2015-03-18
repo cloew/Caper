@@ -9,7 +9,7 @@ class FunctionFinder:
         
     def find(self, file, lineNumber):
         """ Returns the section for the function that encapsulate the given line number or None """
-        section = self.sectionFinder.find(file, startAt=lineNumber)
+        section = self.sectionFinder.find(file, startAt=lineNumber, direction=SectionFinder.UP)
         if section is not None and not self.requestedLineInSection(lineNumber, section):
             return None
             
